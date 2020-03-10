@@ -11,4 +11,4 @@ app.listen(80, () => {
 	console.log("Server ready");
 });
 
-console.log("Server ready...");
+console.log("Starting server...");
