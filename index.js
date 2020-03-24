@@ -43,14 +43,31 @@ app.post(BASE_API_URL+"/exports_imports_stats",(req,res) =>{
 	if((newStat == "") || (newStat.country == null)){
 		res.sendStatus(400,"BAD REQUEST");
 	} else {
-		exports_imports_stats.push(newContact); 	
+		exports_imports_stats.push(newStat); 	
 		res.sendStatus(201,"CREATED");
 	}
 });
 
-// DELETE || (newStat.country == null)
+// DELETE exports_imports_stats
+app.delete(BASE_API_URL+"/exports_imports_stats"),(req,res)=>{
+	var filteredStats = exports_imports_stats.filter((c) => {
+		return (c.country != null);
+	});
+	
+	
+	if(filteredStats.length == 0){
+		exports_imports_stats = filteredStats;
+		res.sendStatus(200);
+	}else{
+		res.sendStatus(400,"COUNTRY NOT FOUND");
+	}
+};
 
-// GET || (newStat.country == null)/country
+//PUT exports_imports_stats
+app.put(BASE_API_URL+"/exports_imports_stats", (req,res)=>{
+    res.status(405).send("NOT ALLOWED");
+})
+// GET exports_imports_stats/country
 
 app.get(BASE_API_URL+"/exports_imports_stats/:country", (req,res)=>{
 	
@@ -68,8 +85,21 @@ app.get(BASE_API_URL+"/exports_imports_stats/:country", (req,res)=>{
 	}
 });
 
-// PUT CONTACT/XXX
-
+// PUT exports_imports_stats/country
+app.put(BASE_API_URL+"/exports_imports_stats/:country",(req,res)=>{
+	var country = req.params.country;
+	if(!country){
+		res.sendStatus(404, "COUNTRY NOT FOUND");
+	}
+	else{
+		if(country == ""){
+			res.sendStatus(400, "PLACE DOES NOT EXIST")
+		}else{
+			place == req.body.country;
+			res.sendStatus(200,"ESTA PERFE MAKI")
+		}
+	}
+});
 // DELETE exports_imports_stats/country
 
 app.delete(BASE_API_URL+"/exports_imports_stats/:country", (req,res)=>{
