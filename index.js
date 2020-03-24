@@ -25,7 +25,10 @@ var exports_imports_stats = [
 ];
 
 const BASE_API_URL = "/api/v1";
-
+//GET loadInitialData
+app.get(BASE_API_URL + "/lottery-sales/loadInitialData", (req,res) => {
+	res.send(JSON.stringify(exports_imports_stats,null,2))
+});
 // GET exports_imports_stats
 
 app.get(BASE_API_URL+"/exports_imports_stats", (req,res) =>{
