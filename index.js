@@ -67,6 +67,22 @@ app.delete(BASE_API_URL+"/exports_imports_stats"),(req,res)=>{
 app.put(BASE_API_URL+"/exports_imports_stats", (req,res)=>{
     res.status(405).send("NOT ALLOWED");
 })
+//POST exports_imports_stats/xxxx
+app.post(BASE_API_URL+"/exports_imports_stats/:country", (req,res)=>{
+    res.status(405).send("NOT ALLOWED");
+})
+app.post(BASE_API_URL+"/exports_imports_stats/:year", (req,res)=>{
+    res.status(405).send("NOT ALLOWED");
+})
+app.post(BASE_API_URL+"/exports_imports_stats/:import_profit", (req,res)=>{
+    res.status(405).send("NOT ALLOWED");
+})
+app.post(BASE_API_URL+"/exports_imports_stats/:export_profit", (req,res)=>{
+    res.status(405).send("NOT ALLOWED");
+})
+app.post(BASE_API_URL+"/exports_imports_stats/:food_export", (req,res)=>{
+    res.status(405).send("NOT ALLOWED");
+})
 // GET exports_imports_stats/country
 
 app.get(BASE_API_URL+"/exports_imports_stats/:country", (req,res)=>{
