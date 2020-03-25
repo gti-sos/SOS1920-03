@@ -105,19 +105,21 @@ app.get(BASE_API_URL+"/exports_imports_stats/:country", (req,res)=>{
 });
 
 // PUT exports_imports_stats/country
-app.put(BASE_API_URL+"/exports_imports_stats/:country",(req,res)=>{
-	var country = req.params.country;
-	if(!country){
-		res.sendStatus(404, "COUNTRY NOT FOUND");
-	}
-	else{
-		if(country == ""){
-			res.sendStatus(400, "PLACE DOES NOT EXIST")
-		}else{
-			place == req.body.country;
-			res.sendStatus(200,"ESTA PERFE MAKI")
-		}
-	}
+app.put(BASE_API_URL +"/lottery-sales/:country/:year",(req,res)=>{
+    var country=req.params.country;
+    var year=req.params.year;
+    var data=req.body;
+    
+    if(country!=data.country||year!=data.year){
+        res.status(400).send("BAD DATA");
+    }else{
+        var filteredStats = exports_imports_stats.filter((c) => {
+        return (c.country != country || c.year != year);
+        });      
+        stats = filteredStats;
+        stats.push(data);
+        res.status(200).send("DATA UPDATED");
+    }
 });
 // DELETE exports_imports_stats/country
 
