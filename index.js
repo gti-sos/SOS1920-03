@@ -7,20 +7,20 @@ app.use(bodyParser.json());
 
 var port = process.env.PORT || 80;
 
-var tourists_countries_stats = [
+var public_buget_stats = [
 	{ 
 		country: "Francia",
 		year: 2017,
-		tourist: 85800000,
-		difference_2016_17: 2.6,
-		tourist_income:	60700000000
+		public_budget_income: 1598000000,
+		population: 82605000,
+		public_budget_loss: 1573000000000
 	},
 	{ 
 		country: "España",
 		year: 2017,
-		tourist: 81900000,
-		difference_2016_17: 10.1,
-		tourist_income:	67900000000	
+		public_budget_income:492400000,
+		population: 46491000,
+		public_budget_loss:	535900000000	
 	}
 ];
 
@@ -28,61 +28,80 @@ const BASE_API_URL = "/api/v1";
 
 // GET COUNTRIES
 
-app.get(BASE_API_URL+"/tourists_countries_stats/loadInitialData", (req,res) =>{
-	res.send(JSON.stringify(tourists_countries_stats,null,2));
-	console.log("Data sent:"+JSON.stringify(tourists_countries_stats,null,2));
+app.get(BASE_API_URL+"/public_buget_stats/loadInitialData", (req,res) =>{
+	res.send(JSON.stringify(public_buget_stats,null,2));
+	console.log("Data sent:"+JSON.stringify(public_buget_stats,null,2));
 });
 
 
 // POST COUNTRIES
 
-app.post(BASE_API_URL+"/tourists_countries_stats",(req,res) =>{
+app.post(BASE_API_URL+"/public_buget_stats",(req,res) =>{
 	
-	var newTCS = req.body;
+	var newCountry = req.body;
 	
-	if((newTCS == "") || (newTCS.country == null)){
+	if((newCountry == "") || (newCountry.country == null)){
 		res.sendStatus(400,"BAD REQUEST");
 	} else {
-		tourists_countries_stats.push(newTCS); 	
+		public_buget_stats.push(newCountry); 	
 		res.sendStatus(201,"CREATED");
 	}
 });
 
 // DELETE COUNTRIES
-
+app.delete(BASE_API_URL+"/public_buget_stats", (req,res)=>{
+    public_buget_stats = [];
+    res.send(JSON.stringify(public_buget_stats,null,2));
+});
 // GET COUNTRY/XXX
 
-app.get(BASE_API_URL+"/tourists_countries_stats/:country", (req,res)=>{
+app.get(BASE_API_URL+"/public_buget_stats/:country", (req,res)=>{
 	
 	var country = req.params.country;
 	
-	var filteredTCS = tourists_countries_stats.filter((c) => {
+	var filteredStats = public_buget_stats.filter((c) => {
 		return (c.country == country);
 	});
 	
 	
-	if(filteredTCS.length >= 1){
-		res.send(filteredTCS[0]);
+	if(filteredStats.length >= 1){
+		res.send(filteredStats[0]);
 	}else{
 		res.sendStatus(404,"COUNTRY NOT FOUND");
 	}
 });
 
 // PUT COUNTRY/XXX
+app.put(BASE_API_URL +"/public_buget_stats/:country/:year",(req,res)=>{
+    var country=req.params.country;
+    var year=req.params.year;
+    var data=req.body;
+    
+    if(country!=data.country||year!=data.year){
+        res.status(400).send("BAD DATA");
+    }else{
+        var filteredStats = public_buget_stats.filter((c) => {
+        return (c.country != country || c.year != year);
+        });      
+        public_buget_stats = filteredStats;
+        public_buget_stats.push(data);
+        res.status(200).send("DATA UPDATED");
+    }
+});
 
 // DELETE COUNTRY/XXX
 
-app.delete(BASE_API_URL+"/tourists_countries_stats/:country", (req,res)=>{
+app.delete(BASE_API_URL+"/public_buget_stats/:country", (req,res)=>{
 	
 	var country = req.params.country;
 	
-	var filteredTCS = tourists_countries_stats.filter((c) => {
+	var filteredStats = public_buget_stats.filter((c) => {
 		return (c.country != country);
 	});
 	
 	
-	if(filteredTCS.length < tourists_countries_stats.length){
-		tourists_countries_stats = filteredTCS;
+	if(filteredStats.length < public_buget_stats.length){
+		public_buget_stats = filteredStats;
 		res.sendStatus(200);
 	}else{
 		res.sendStatus(404,"COUNTRY NOT FOUND");
@@ -91,6 +110,26 @@ app.delete(BASE_API_URL+"/tourists_countries_stats/:country", (req,res)=>{
 	
 });
 
+//PUT exports_imports_stats
+app.put(BASE_API_URL+"/public_buget_stats", (req,res)=>{
+    res.status(405).send("NOT ALLOWED");
+})
+//POST exports_imports_stats/xxxx
+app.post(BASE_API_URL+"/public_buget_stats/:country", (req,res)=>{
+    res.status(405).send("NOT ALLOWED");
+})
+app.post(BASE_API_URL+"/public_buget_stats/:year", (req,res)=>{
+    res.status(405).send("NOT ALLOWED");
+})
+app.post(BASE_API_URL+"/public_buget_stats/:public_budget_income", (req,res)=>{
+    res.status(405).send("NOT ALLOWED");
+})
+app.post(BASE_API_URL+"/public_buget_stats/:population", (req,res)=>{
+    res.status(405).send("NOT ALLOWED");
+})
+app.post(BASE_API_URL+"/public_buget_stats/:public_budget_loss", (req,res)=>{
+    res.status(405).send("NOT ALLOWED");
+})
 
 app.listen(port, () => {
 	console.log("Server ready");
