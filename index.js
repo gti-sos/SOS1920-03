@@ -132,7 +132,7 @@ app.delete(BASE_API_URL+"/exports_imports_stats/:country", (req,res)=>{
 	
 	if(filteredstats.length < exports_imports_stats.length){
 		exports_imports_stats = filteredstats;
-		res.sendStatus(200);
+		res.sendStatus(200,"COUNTRY DELETED");
 	}else{
 		res.sendStatus(404,"COUNTRY NOT FOUND");
 	}
