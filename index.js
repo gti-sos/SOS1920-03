@@ -104,8 +104,8 @@ app.get(BASE_API_URL+"/exports_imports_stats/:country", (req,res)=>{
 	}
 });
 
-// PUT exports_imports_stats/country
-app.put(BASE_API_URL +"/lottery-sales/:country/:year",(req,res)=>{
+// PUT exports_imports_stats/country/year
+app.put(BASE_API_URL +"/exports_imports_stats/:country/:year",(req,res)=>{
     var country=req.params.country;
     var year=req.params.year;
     var data=req.body;
