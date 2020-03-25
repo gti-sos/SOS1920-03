@@ -53,11 +53,11 @@ app.post(BASE_API_URL+"/exports_imports_stats",(req,res) =>{
 });
 
 // DELETE exports_imports_stats
-app.delete(BASE_API_URL+"/exports_imports_stats"),(req,res)=>{
-	exports_imports_stats = [];
-	res.send(JSON.stringify(exports_imports_stats,null,2));
-};
-
+app.delete(BASE_API_URL+"/exports_imports_stats", (req,res)=>{
+    exports_imports_stats = [];
+    res.send(JSON.stringify(exports_imports_stats,null,2));
+    
+});
 //PUT exports_imports_stats
 app.put(BASE_API_URL+"/exports_imports_stats", (req,res)=>{
     res.status(405).send("NOT ALLOWED");
