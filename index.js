@@ -103,7 +103,20 @@ app.get(BASE_API_URL+"/exports_imports_stats/:country", (req,res)=>{
 		res.sendStatus(404,"COUNTRY NOT FOUND");
 	}
 });
-
+//GET extra para el put
+app.get(BASE_API_URL+"/exports_imports_stats/:country/:year", (req,res)=>{
+    
+    var country = req.params.country;
+    var year = req.params.year;
+    var filteredStats = exports_imports_stats.filter((c) => {
+        return (c.country == country && c.year == year);
+    });
+    if(filteredStats.length >= 1){
+        res.send(filteredStats[0]);
+    }else{
+        res.status(404).send("NOT FOUND");
+    }
+});
 // PUT exports_imports_stats/country/year
 app.put(BASE_API_URL +"/exports_imports_stats/:country/:year",(req,res)=>{
     var country=req.params.country;
