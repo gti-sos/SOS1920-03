@@ -121,8 +121,8 @@ app.put(BASE_API_URL +"/exports_imports_stats/:country/:year",(req,res)=>{
         var filteredStats = exports_imports_stats.filter((c) => {
         return (c.country != country || c.year != year);
         });      
-        stats = filteredStats;
-        stats.push(data);
+        exports_imports_stats = filteredStats;
+        exports_imports_stats.push(data);
         res.status(200).send("DATA UPDATED");
     }
 });
