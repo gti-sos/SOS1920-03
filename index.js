@@ -55,7 +55,6 @@ app.post(BASE_API_URL+"/exports_imports_stats",(req,res) =>{
 app.delete(BASE_API_URL+"/exports_imports_stats"),(req,res)=>{
 	var Stats = [];
 	res.send(JSON.stringify(sales,null,2));
-	res.status(200).send("ALL DELETED");
 };
 
 //PUT exports_imports_stats
