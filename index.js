@@ -53,17 +53,9 @@ app.post(BASE_API_URL+"/exports_imports_stats",(req,res) =>{
 
 // DELETE exports_imports_stats
 app.delete(BASE_API_URL+"/exports_imports_stats"),(req,res)=>{
-	var filteredStats = exports_imports_stats.filter((c) => {
-		return (c.country != null);
-	});
-	
-	
-	if(filteredStats.length == 0){
-		exports_imports_stats = filteredStats;
-		res.sendStatus(200);
-	}else{
-		res.sendStatus(400,"COUNTRY NOT FOUND");
-	}
+	var Stats = [];
+	res.send(JSON.stringify(sales,null,2));
+	res.status(200.send("ALL DELETED");
 };
 
 //PUT exports_imports_stats
