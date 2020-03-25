@@ -7,7 +7,12 @@ app.use(bodyParser.json());
 
 var port = process.env.PORT || 80;
 
-var exports_imports_stats = [
+var exports_imports_stats = [];
+
+const BASE_API_URL = "/api/v1";
+//GET loadInitialData
+app.get(BASE_API_URL + "/exports_imports_stats/loadInitialData", (req,res) => {
+	var stats= [
 	{ 
 		country: "Alemania",
 		year: 2017,
@@ -21,13 +26,9 @@ var exports_imports_stats = [
 		import_profit: 342400,
 		export_profit: 333400,
 		food_export: 16.23	
-	}
-];
-
-const BASE_API_URL = "/api/v1";
-//GET loadInitialData
-app.get(BASE_API_URL + "/exports_imports_stats/loadInitialData", (req,res) => {
-	res.send(JSON.stringify(exports_imports_stats,null,2))
+	}];
+	exports_imports_stats=stats;
+	res.send(JSON.stringify(stats,null,2))
 });
 // GET exports_imports_stats
 
