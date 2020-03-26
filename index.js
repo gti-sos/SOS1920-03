@@ -7,7 +7,14 @@ app.use(bodyParser.json());
 
 var port = process.env.PORT || 80;
 
-var public_buget_stats = [
+var public_buget_stats = [];
+
+const BASE_API_URL = "/api/v1";
+
+// GET COUNTRIES
+
+app.get(BASE_API_URL+"/public_buget_stats/loadInitialData", (req,res) =>{
+	var datos =[
 	{ 
 		country: "Francia",
 		year: 2017,
@@ -22,13 +29,13 @@ var public_buget_stats = [
 		population: 46491000,
 		public_budget_loss:	535900000000	
 	}
-];
+		];
+	public_budget_stats=datos;
+	res.send(JSON.stringify(datos,null,2))
+});
+//GET countries
 
-const BASE_API_URL = "/api/v1";
-
-// GET COUNTRIES
-
-app.get(BASE_API_URL+"/public_buget_stats/loadInitialData", (req,res) =>{
+app.get(BASE_API_URL+"/public_buget_stats", (req,res) =>{
 	res.send(JSON.stringify(public_buget_stats,null,2));
 	console.log("Data sent:"+JSON.stringify(public_buget_stats,null,2));
 });
