@@ -13,6 +13,7 @@
 - **POSTMAN**:
     - [sos1920-03-tourists_countries_stats](https://documenter.getpostman.com/view/10637366/SzYUZgJF) (developed by [Antonio José Marín Rodríguez](https://github.com/marinantonioj))
     - [sos1920-03-exports_imports_stats](https://documenter.getpostman.com/view/10862126/SzYUZg9V) (developed by [Juan Rafael Barragán Franco](https://github.com/JuanRafaelBF))
+	- [sos1920-03-public_buget_stats](https://documenter.getpostman.com/view/10862126/SzYUZg9V) (developed by [José Manuel González Domínguez](https://github.com/jgonzalezal37))
 	
 	
   
