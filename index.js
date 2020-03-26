@@ -217,7 +217,7 @@ app.get(BASE_API_URL+"/public_buget_stats/:country", (req,res)=>{
 	if(filteredStats.length >= 1){
 		res.send(filteredStats[0]);
 	}else{
-		res.sendStatus(404,"COUNTRY NOT FOUND");
+		res.sendStatus(404,"NOT FOUND");
 	}
 });
 
@@ -228,7 +228,7 @@ app.put(BASE_API_URL +"/public_buget_stats/:country/:year",(req,res)=>{
     var data=req.body;
     
     if(country!=data.country||year!=data.year){
-        res.status(400).send("BAD DATA");
+        res.status(400).send("BAD REQUEST");
     }else{
         var filteredStats = public_buget_stats.filter((c) => {
         return (c.country != country || c.year != year);
@@ -254,7 +254,7 @@ app.delete(BASE_API_URL+"/public_buget_stats/:country", (req,res)=>{
 		public_buget_stats = filteredStats;
 		res.sendStatus(200);
 	}else{
-		res.sendStatus(404,"COUNTRY NOT FOUND");
+		res.sendStatus(404,"NOT FOUND");
 	}
 	
 	
@@ -359,7 +359,7 @@ app.get(BASE_API_URL+"/tourists_countries_stats/:country", (req,res)=>{
 	if(filteredTCS.length >= 1){
 		res.send(filteredTCS[0]);
 	}else{
-		res.sendStatus(404,"COUNTRY NOT FOUND");
+		res.sendStatus(404,"NOT FOUND");
 	}
 });
 
@@ -371,7 +371,7 @@ app.put(BASE_API_URL +"/tourists_countries_stats/:country/:year",(req,res)=>{
     var data=req.body;
     
     if(country!=data.country||year!=data.year){
-        res.status(400).send("BAD Request");
+        res.status(400).send("BAD REQUEST");
     }else{
         var filteredTCS = tourists_countries_stats.filter((c) => {
         return (c.country != country || c.year != year);
