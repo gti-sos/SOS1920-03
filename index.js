@@ -7,6 +7,8 @@ app.use(bodyParser.json());
 
 var port = process.env.PORT || 80;
 
+const BASE_API_URL = "/api/v1";
+
 
 //------------------------------------------------------------------------------
 //--------------------JUAN RAFAEL BARRAGAN FRANCO-------------------------------
@@ -14,7 +16,6 @@ var port = process.env.PORT || 80;
 
 var exports_imports_stats = [];
 
-const BASE_API_URL = "/api/v1";
 //GET loadInitialData
 app.get(BASE_API_URL + "/exports_imports_stats/loadInitialData", (req,res) => {
 	var stats= [
@@ -174,7 +175,6 @@ var public_buget_stats = [
 	}
 ];
 
-const BASE_API_URL = "/api/v1";
 
 // GET COUNTRIES
 
@@ -286,8 +286,6 @@ app.post(BASE_API_URL+"/public_buget_stats/:public_budget_loss", (req,res)=>{
 //------------------------------------------------------------------------------
 
 var tourists_countries_stats = [];
-
-const BASE_API_URL = "/api/v1";
 
 //GET loadInitialData
 app.get(BASE_API_URL + "/tourists_countries_stats/loadInitialData", (req,res) => {
