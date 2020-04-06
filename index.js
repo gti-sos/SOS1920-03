@@ -126,6 +126,20 @@ app.put(BASE_API_URL +"/exports_imports_stats/:country/:year",(req,res)=>{
         res.status(200).send("DATA UPDATED");
     }
 });
+//DELETE exports_imports_stats/country/year
+app.delete(BASE_API_URL+"/exports_imports_stats/:country/:year", (req,res)=>{
+		var country = req.params.country;
+		var year = req.params.year;
+		var filteredStats = exports_imports_stats.filter((c) => {
+			return (c.country != country || c.year != year);
+		});
+		if(filteredStats.length < exports_imports_stats.length){
+			exports_imports_stats = filteredStats;
+			res.sendStatus(200,"DELETED");
+		}else{
+			res.sendStatus(404,"NOT FOUND");
+		}
+	});
 // DELETE exports_imports_stats/country
 
 app.delete(BASE_API_URL+"/exports_imports_stats/:country", (req,res)=>{
