@@ -85,7 +85,7 @@ module.exports = function (app){
 	// POST exports_imports_stats
 
 	app.post(BASE_API_URL+"/exports_imports_stats",(req,res) =>{
-	
+		console.log("NEW POST ...../exports_imports_stats/country/year");
 		var newStat = req.body;
 	
 		if((newStat == "") || (newStat.country == null)){
@@ -97,43 +97,55 @@ module.exports = function (app){
 	});
 	//POST exports_imports_stats/xxxx
 	app.post(BASE_API_URL+"/exports_imports_stats/:country", (req,res)=>{
+		console.log("NEW POST ...../exports_imports_stats/country/year");
 		res.status(405).send("NOT ALLOWED");
 	});
 	app.post(BASE_API_URL+"/exports_imports_stats/:year", (req,res)=>{
+		console.log("NEW POST ...../exports_imports_stats/country/year");
 		res.status(405).send("NOT ALLOWED");
 	});
 	app.post(BASE_API_URL+"/exports_imports_stats/:import_profit", (req,res)=>{
+		console.log("NEW POST ...../exports_imports_stats/country/year");
 		res.status(405).send("NOT ALLOWED");
 	});
 	app.post(BASE_API_URL+"/exports_imports_stats/:export_profit", (req,res)=>{
+		console.log("NEW POST ...../exports_imports_stats/country/year");
 		res.status(405).send("NOT ALLOWED");
 	});
 	app.post(BASE_API_URL+"/exports_imports_stats/:food_export", (req,res)=>{
+		console.log("NEW POST ...../exports_imports_stats/country/year");
 		res.status(405).send("NOT ALLOWED");
 	});
+	
+	//POST exports_imports_stats/country/year
+	app.post(BASE_API_URL+"/exports_imports_stats/:country/:year", (req,res)=>{
+		console.log("NEW POST ...../exports_imports_stats/country/year");
+		res.status(405).send("NOT ALLOWED");
+	});
+	
+	
 	//-----------------------------------------------------------
 	//--------------------TODOS LOS PUT -------------------------
 	//-----------------------------------------------------------
 	
 	//PUT exports_imports_stats
 	app.put(BASE_API_URL+"/exports_imports_stats", (req,res)=>{
+		console.log("NEW PUT ...../exports_imports_stats");
 	    res.status(405).send("NOT ALLOWED");
 	});
 	
 	// PUT exports_imports_stats/country/year
 	app.put(BASE_API_URL +"/exports_imports_stats/:country/:year",(req,res)=>{
-		var country=req.params.country;
-		var year=req.params.year;
+		console.log("NEW PUT ...../exports_imports_stats/country/year");
+		var reqcountry=req.params.country;
+		var reqyear=req.params.year;
 		var data=req.body;
 
-		if(country!=data.country||year!=data.year){
+		if(data==""){
 			res.status(400).send("BAD DATA");
 		}else{
-			var filteredStats = exports_imports_stats.filter((c) => {
-			return (c.country != country || c.year != year);
-			});      
-			exports_imports_stats = filteredStats;
-			exports_imports_stats.push(data);
+			db.remove({country: reqcountry, year: reqyear}, { multi: true }, function (err, salida) {});
+			db.insert(data);
 			res.status(200).send("DATA UPDATED");
 		}
 	});
@@ -153,6 +165,7 @@ module.exports = function (app){
 	// DELETE exports_imports_stats/country
 
 	app.delete(BASE_API_URL+"/exports_imports_stats/:country", (req,res)=>{
+		console.log("NEW DELETE ...../exports_imports_stats/country");
 		var reqcountry = req.params.country;
 		db.remove({country:reqcountry},{multi:true}, (err, salida) => {
 				if(salida==0){
@@ -167,6 +180,7 @@ module.exports = function (app){
 	
 	//DELETE exports_imports_stats/country/year
 	app.delete(BASE_API_URL+"/exports_imports_stats/:country/:year", (req,res)=>{
+		console.log("NEW DELETE ...../exports_imports_stats/country/year");
 			var reqcountry = req.params.country;
 			var reqyear = parseInt(req.params.year);
 			db.remove({country:reqcountry,year:reqyear},{multi:true}, (err, salida) => {
