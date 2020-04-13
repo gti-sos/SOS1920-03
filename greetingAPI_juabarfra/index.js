@@ -85,13 +85,13 @@ module.exports = function (app){
 	// POST exports_imports_stats
 
 	app.post(BASE_API_URL+"/exports_imports_stats",(req,res) =>{
-		console.log("NEW POST ...../exports_imports_stats/country/year");
+		console.log("NEW POST ...../exports_imports_stats");
 		var newStat = req.body;
 	
 		if((newStat == "") || (newStat.country == null)){
 			res.sendStatus(400,"BAD REQUEST");
 		} else {
-			exports_imports_stats.push(newStat); 	
+			db.insert(newStat); 	
 			res.sendStatus(201,"CREATED");
 		}
 	});
@@ -138,7 +138,7 @@ module.exports = function (app){
 	app.put(BASE_API_URL +"/exports_imports_stats/:country/:year",(req,res)=>{
 		console.log("NEW PUT ...../exports_imports_stats/country/year");
 		var reqcountry=req.params.country;
-		var reqyear=req.params.year;
+		var reqyear=parseInt(req.params.year);
 		var data=req.body;
 
 		if(data==""){
@@ -146,7 +146,16 @@ module.exports = function (app){
 		}else{
 			db.remove({country: reqcountry, year: reqyear}, { multi: true }, function (err, salida) {});
 			db.insert(data);
-			res.status(200).send("DATA UPDATED");
+			res.sendStatus(200);
+				/*		if(salida==1){
+					console.log("DATA UPDATED");
+					db.insert(data);
+					res.sendStatus(200);
+				}else{
+					console.log("DATA NOT FOUND");
+					res.sendStatus(404);
+				}*/
+			
 		}
 	});
 	
