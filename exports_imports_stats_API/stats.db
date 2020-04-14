@@ -1,14 +1,2 @@
-{"country":"Italia","year":2017,"import_profit":426586,"export_profit":111111,"food_export":8.99,"_id":"3ZrhHUKn5mPbcqPC"}
-{"country":"Alemania","year":2017,"import_profit":1571000,"export_profit":1104000,"food_export":5.61,"_id":"DgWGmrP3nt33UpYN"}
-{"country":"Espagna","year":2017,"import_profit":342400,"export_profit":333400,"food_export":16.23,"_id":"OOMV14Cr8ssDwHky"}
-{"country":"Alemania","year":2017,"import_profit":1571000,"export_profit":1104000,"food_export":5.61,"_id":"vnDrZK712IF8Ppet"}
-{"country":"Espagna","year":2017,"import_profit":342400,"export_profit":333400,"food_export":16.23,"_id":"oSXvU1REJsAZ277u"}
-{"country":"Italia","year":2017,"import_profit":426586,"export_profit":426700,"food_export":8.99,"_id":"68R4qM6pupAVjAAm"}
-{"$$deleted":true,"_id":"3ZrhHUKn5mPbcqPC"}
-{"$$deleted":true,"_id":"68R4qM6pupAVjAAm"}
-{"country":"Italia","year":2017,"import_profit":426586,"export_profit":111111,"food_export":8.99,"_id":"j4zjFuM4yzflfxmS"}
-{"$$deleted":true,"_id":"DgWGmrP3nt33UpYN"}
-{"$$deleted":true,"_id":"vnDrZK712IF8Ppet"}
-{"$$deleted":true,"_id":"OOMV14Cr8ssDwHky"}
-{"$$deleted":true,"_id":"j4zjFuM4yzflfxmS"}
-{"$$deleted":true,"_id":"oSXvU1REJsAZ277u"}
+{"country":"Alemania","year":2017,"import_profit":1571000,"export_profit":1104000,"food_export":5.61,"_id":"Kx4gCRzemMqYWEaZ"}
+{"country":"Espagna","year":2017,"import_profit":342400,"export_profit":333400,"food_export":16.23,"_id":"w1EbHOxd5OBxj82J"}

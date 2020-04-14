@@ -37,20 +37,21 @@ module.exports = function (app){
 		food_export: 16.23	
 	}];
 		exports_imports_stats=stats;
+		db.remove({}, { multi: true }, function(err, numRemoved) {});
 		db.insert(stats);
 		res.sendStatus(200);
 		console.log("Initial stats loaded:" +JSON.stringify(stats,null,2));
 	});
 	// GET exports_imports_stats
 
-	app.get(BASE_API_URL+"/exports_imports_stats", (req,res) =>{
+	/*app.get(BASE_API_URL+"/exports_imports_stats", (req,res) =>{
 		console.log("NEW GET ...../exports_imports_stats");
 		db.find({}, (err, exports_imports_stats) =>{
 			exports_imports_stats.forEach((c)=>{delete c._id});
 			res.send(JSON.stringify(exports_imports_stats,null,2));
 			console.log("Data sent:"+JSON.stringify(exports_imports_stats,null,2));
 		});
-	});
+	});*/
 	// GET exports_imports_stats/country
 	app.get(BASE_API_URL+"/exports_imports_stats/:country", (req,res)=>{
 		console.log("NEW GET ...../exports_imports_stats/country");
@@ -73,8 +74,124 @@ module.exports = function (app){
 			console.log("Data sent:"+JSON.stringify(exports_imports_stats,null,2));
 		});
 	});
-	
-	
+	//-----------------------------------------------------------
+	//--------------------GET + PAGINATION-------------------------
+	//-----------------------------------------------------------
+	app.get(BASE_API_URL+"/exports_imports_stats", (req,res) =>{
+		var limit = parseInt(req.query.limit);
+        var offset = parseInt(req.query.offset);
+        
+        var from = parseInt(req.query.from);
+        var to = parseInt(req.query.to);
+		
+        var country = req.query.country;
+        var year = parseInt(req.query.year);
+        var import_profit = parseInt(req.query.import_profit);
+        var export_profit = parseInt(req.query.export_profit);
+        var food_export = parseFloat(req.query.food_export);
+        
+    
+        if(from && to) {
+            db.find({ year: {$gte: from, $lte: to}}).skip(offset).limit(limit).exec((err, exports_imports_stats)=>{
+                if(exports_imports_stats.length == 0) {
+                  	res.status(404).send("NOT FOUND");
+                }else { 
+                    exports_imports_stats.forEach((c)=>{delete c._id});
+					res.send(JSON.stringify(exports_imports_stats,null,2));
+                }    
+			});
+			
+        } else if(country || year || import_profit || export_profit || food_export) {
+			
+              if(!year && !import_profit && !export_profit && !food_export ) {
+                   db.find({country:country}).skip(offset).limit(limit).exec((err, exports_imports_stats)=>{   
+						if(exports_imports_stats.length == 0) {
+							res.status(404).send("NOT FOUND");
+						}else { 
+							exports_imports_stats.forEach((c)=>{delete c._id});
+							res.send(JSON.stringify(exports_imports_stats,null,2));
+						}  
+                	});
+             
+			  }else if(!country && !import_profit && !export_profit && !food_export ) {
+					db.find({year:year}).skip(offset).limit(limit).exec((err, exports_imports_stats)=>{
+						if(exports_imports_stats.length == 0) {
+							res.status(404).send("NOT FOUND");
+						}else { 
+							exports_imports_stats.forEach((c)=>{delete c._id});
+							res.send(JSON.stringify(exports_imports_stats,null,2));
+						} 
+					});
+				  
+        		
+			  }else if(!country && !year && !export_profit && !food_export) {
+					db.find({import_profit:import_profit}).skip(offset).limit(limit).exec((err, exports_imports_stats)=>{
+						if(exports_imports_stats.length == 0) {
+							res.status(404).send("NOT FOUND");
+						}else { 
+							exports_imports_stats.forEach((c)=>{delete c._id});
+							res.send(JSON.stringify(exports_imports_stats,null,2));
+						} 
+					}); 
+			
+        
+			  }else if(!country && !year && !import_profit && !food_export ) {
+					db.find({export_profit:export_profit}).skip(offset).limit(limit).exec((err, exports_imports_stats)=>{
+						if(exports_imports_stats.length == 0) {
+							res.status(404).send("NOT FOUND");
+						}else { 
+							exports_imports_stats.forEach((c)=>{delete c._id});
+							res.send(JSON.stringify(exports_imports_stats,null,2));
+						} 
+					});
+			
+        
+			  }else if(!country && !year && !import_profit && !export_profit ) {
+					db.find({"food_export":food_export}).skip(offset).limit(limit).exec((err, exports_imports_stats)=>{   
+						if(exports_imports_stats.length == 0) {
+							res.status(404).send("NOT FOUND");
+						}else { 
+							exports_imports_stats.forEach((c)=>{delete c._id});
+							res.send(JSON.stringify(exports_imports_stats,null,2));
+						} 
+					});
+				  
+        
+			  }else if(!import_profit && !export_profit && !food_export ) {
+					db.find({country:country, year: year}).skip(offset).limit(limit).exec((err, exports_imports_stats)=>{
+						if(exports_imports_stats.length == 0) {
+							res.status(404).send("NOT FOUND");
+						}else { 
+							exports_imports_stats.forEach((c)=>{delete c._id});
+							res.send(JSON.stringify(exports_imports_stats,null,2));
+						} 
+					});
+       
+			  }else {
+				db.find(
+					{country:country,
+					 year:year,
+					 import_profit:import_profit,
+					 export_profit:export_profit})
+					.skip(offset).limit(limit).exec((err, exports_imports_stats)=>{
+					
+					if(exports_imports_stats.length == 0) {
+						res.status(404).send("NOT FOUND");
+					} else { 
+						exports_imports_stats.forEach((c)=>{delete c._id});
+						res.send(JSON.stringify(exports_imports_stats,null,2));
+						} 
+				});
+        	 }			
+			
+        }else {
+            db.find({}).skip(offset).limit(limit).exec((err, exports_imports_stats)=>{
+                    exports_imports_stats.forEach((c)=>{delete c._id});
+					res.send(JSON.stringify(exports_imports_stats,null,2));
+				});      
+            };
+    
+	});
 	
 	
 	
