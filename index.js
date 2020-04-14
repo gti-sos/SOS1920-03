@@ -1,11 +1,22 @@
 const express = require("express");
 const bodyParser = require("body-parser");
+const dataStore = require("nedb");
+const path = require("path");
 
-var app = express();
+const port = process.env.PORT || 80;
+const dbFileName = path.join(__dirname + "tourists_countries_stats.db");
+
+const app = express();
 
 app.use(bodyParser.json());
 
-var port = process.env.PORT || 80;
+
+const db = new dataStore({
+			filename: dbFileName,
+			autoload: true
+
+});
+
 
 var tourists_countries_stats = [];
 
@@ -13,6 +24,9 @@ const BASE_API_URL = "/api/v1";
 
 //GET loadInitialData
 app.get(BASE_API_URL + "/tourists_countries_stats/loadInitialData", (req,res) => {
+	
+	console.log("NEW GET .../tourists_countries_stats/loadInitialData");
+	
 	var stats= [
 	{ 
 		country: "Francia",
@@ -28,15 +42,29 @@ app.get(BASE_API_URL + "/tourists_countries_stats/loadInitialData", (req,res) =>
 		difference_2016_17: 10.1,
 		tourist_income:	67900000000	
 	}];
+	
+	db.insert(stats);
+	
 	tourists_countries_stats=stats;
-	res.send(JSON.stringify(stats,null,2))
+	res.sendStatus(200);
+	console.log("Initial data loaded:"+JSON.stringify(tourists_countries_stats,null,2));
 });
 
 // GET COUNTRIES
 
 app.get(BASE_API_URL+"/tourists_countries_stats", (req,res) =>{
-	res.send(JSON.stringify(tourists_countries_stats,null,2));
-	console.log("Data sent:"+JSON.stringify(tourists_countries_stats,null,2));
+	
+	console.log("NEW GET .../tourists_countries_stats");
+	
+	db.find({}, (err,tourists_countries_stats) => {
+		
+		tourists_countries_stats.forEach( (c) => {
+			delete c._id;
+		})
+		
+		res.send(JSON.stringify(tourists_countries_stats,null,2));
+		console.log("Data sent:"+JSON.stringify(tourists_countries_stats,null,2));
+	});
 });
 
 //PUT COUNTRIES ERROR
