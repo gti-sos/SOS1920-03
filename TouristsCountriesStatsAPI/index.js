@@ -343,7 +343,4 @@ app.delete(BASE_API_URL+"/tourists_countries_stats/:country", (req,res)=>{
 				}
 			});
 	});
-	
-	console.log("OK.");
-	
 }
