@@ -1,12 +1,21 @@
 module.exports = function (app){
 	console.log("Registering public_budget_stats API......");
+	const dataStore = require("nedb");
+	const path = require("path");
+	
+	const dbFileName= path.join(__dirname,"stats.db");
 	const BASE_API_URL = "/api/v1";
+	const db = new dataStore({
+				filename: dbFileName,
+				autoload: true
+	});
+	
 	var public_budget_stats = [];
 	
 	// GET COUNTRIES
 
 app.get(BASE_API_URL+"/public_budget_stats/loadInitialData", (req,res) =>{
-	var datos =[
+	var stats =[
 	{ 
 		country: "Francia",
 		year: 2017,
