@@ -71,9 +71,9 @@ app.get(BASE_API_URL+"/public_budget_stats/:country", (req,res)=>{
 		
         var country = req.query.country;
         var year = parseInt(req.query.year);
-        var public_budget_income = parseInt(req.query.import_profit);
-        var population = parseInt(req.query.export_profit);
-        var public_budget_loss = parseFloat(req.query.food_export);
+        var public_budget_income = parseInt(req.query.public_budget_income);
+        var population = parseInt(req.query.population);
+        var public_budget_loss = parseFloat(req.query.public_budget_loss);
 		
 		if(from && to) {
             db.find({ year: {$gte: from, $lte: to}}).skip(offset).limit(limit).exec((err, public_budget_stats)=>{
@@ -213,13 +213,13 @@ app.post(BASE_API_URL+"/public_budget_stats/:public_budget_loss", (req,res)=>{
 	});
 	
 	//PUT
-	//PUT exports_imports_stats
-	app.put(BASE_API_URL+"/exports_imports_stats", (req,res)=>{
-		console.log("NEW PUT ...../exports_imports_stats");
+	//PUT public_budget_stats
+	app.put(BASE_API_URL+"/public_budget_stats", (req,res)=>{
+		console.log("NEW PUT ...../public_budget_stats");
 	    res.status(405).send("NOT ALLOWED");
 	});
 	
-	// PUT exports_imports_stats/country/year
+	// PUT public_budget_stats/country/year
 	app.put(BASE_API_URL +"/public_budget_stats/:year",(req,res)=>{
 		console.log("NEW PUT ...../public_budget_stats/country/year");
 		var reqcountry=req.params.country;
