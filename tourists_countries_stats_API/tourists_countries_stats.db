@@ -1,0 +1,12 @@
+{"country":"Francia","year":2017,"tourist":85800000,"difference_2016_17":2.6,"tourist_income":60700000000,"_id":"fHqv2UWlbQZnSISw"}
+{"country":"Espana","year":2017,"tourist":81900000,"difference_2016_17":10.1,"tourist_income":67900000000,"_id":"DDYCQgAzULoEgnkh"}
+{"country":"Alemania","year":2017,"tourist":37500000,"difference_2016_17":5.2,"tourist_income":39800000000,"_id":"UAOl2IBx9KPwtULJ"}
+{"country":"Italia","year":2017,"tourist":58200000,"difference_2016_17":11.2,"tourist_income":44200000000,"_id":"DySWzcpW7sJLK68i"}
+{"country":"Test","year":2017,"tourist":2,"difference_2016_17":1.2,"tourist_income":5,"_id":"zVnDcCFNdtcgL4AA"}
+{"$$deleted":true,"_id":"zVnDcCFNdtcgL4AA"}
+{"$$deleted":true,"_id":"fHqv2UWlbQZnSISw"}
+{"country":"Espana","year":2017,"tourist":10,"difference_2016_17":10,"tourist_income":10,"_id":"dEMmhMJXlzh33UUp"}
+{"$$deleted":true,"_id":"DDYCQgAzULoEgnkh"}
+{"$$deleted":true,"_id":"DySWzcpW7sJLK68i"}
+{"$$deleted":true,"_id":"UAOl2IBx9KPwtULJ"}
+{"$$deleted":true,"_id":"dEMmhMJXlzh33UUp"}
