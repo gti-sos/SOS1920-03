@@ -193,7 +193,7 @@ app.post(BASE_API_URL+"/public_budget_stats",(req,res) =>{
 	if((newCountry == "") || (newCountry.country == null)){
 		res.sendStatus(400,"BAD REQUEST");
 	} else {
-		public_budget_stats.push(newCountry); 	
+		db.insert(newCountry);	
 		res.sendStatus(201,"CREATED");
 	}
 });
@@ -228,7 +228,7 @@ app.post(BASE_API_URL+"/public_budget_stats/:public_budget_loss", (req,res)=>{
 	});
 	
 	// PUT public_budget_stats/country/year
-	app.put(BASE_API_URL +"/public_budget_stats/:year",(req,res)=>{
+	app.put(BASE_API_URL +"/public_budget_stats/:country/:year",(req,res)=>{
 		console.log("NEW PUT ...../public_budget_stats/country/year");
 		var reqcountry=req.params.country;
 		var reqyear=parseInt(req.params.year);
