@@ -8,8 +8,8 @@ app.use(bodyParser.json());
 //--------------------ANTONIO JOSE MARIN RODRIGUEZ------------------------------
 //------------------------------------------------------------------------------
 
-const TouristsCountriesStatsAPI = require(path.join(__dirname,"TouristsCountriesStatsAPI"));
-TouristsCountriesStatsAPI(app);
+const tourists_countries_stats_API = require(path.join(__dirname,"tourists_countries_stats_API"));
+tourists_countries_stats_API(app);
 
 //------------------------------------------------------------------------------
 //--------------------JUAN RAFAEL BARRAGAN FRANCO-------------------------------
