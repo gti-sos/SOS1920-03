@@ -1,12 +1,19 @@
-module.exports = function(app,db){
-console.log("Registering Tourists Countries Stats API...");
+module.exports = function(app){
+	console.log("Registering Tourists Countries Stats API...");
+	const dataStore = require("nedb");
+	const path = require("path");
+	const dbFileName = path.join(__dirname, "tourists_countries_stats.db");
+	const BASE_API_URL = "/api/v1";	
 	
-const BASE_API_URL = "/api/v1";	
-var tourists_countries_stats = [];
+	const db = new dataStore({
+				filename: dbFileName,
+				autoload: true
+	});
+	var tourists_countries_stats = [];
 
 //GET loadInitialData
 app.get(BASE_API_URL + "/tourists_countries_stats/loadInitialData", (req,res) => {
-	
+	db.remove({}, { multi: true }, function(err, numRemoved) {});
 	console.log("NEW GET .../tourists_countries_stats/loadInitialData");
 	
 	var stats= [
@@ -23,7 +30,20 @@ app.get(BASE_API_URL + "/tourists_countries_stats/loadInitialData", (req,res) =>
 		tourist: 81900000,
 		difference_2016_17: 10.1,
 		tourist_income:	67900000000	
-	}];
+	},
+	{	country: "Alemania",
+		year: 2017,
+		tourist: 37500000,
+		difference_2016_17: 5.2,
+		tourist_income:	39800000000	
+	},
+	{	country: "Italia",
+		year: 2017,
+		tourist: 58200000,
+		difference_2016_17: 11.2,
+		tourist_income:	44200000000	
+	}
+	 ];
 	
 	tourists_countries_stats=stats;
 	db.remove({}, { multi: true }, function(err, numRemoved) {});
@@ -33,7 +53,7 @@ app.get(BASE_API_URL + "/tourists_countries_stats/loadInitialData", (req,res) =>
 });
 
 // GET COUNTRIES
-
+/*
 app.get(BASE_API_URL+"/tourists_countries_stats", (req,res) =>{
 	
 	console.log("NEW GET .../tourists_countries_stats");
@@ -47,8 +67,8 @@ app.get(BASE_API_URL+"/tourists_countries_stats", (req,res) =>{
 		res.send(JSON.stringify(tourists_countries_stats,null,2));
 		console.log("Data sent:"+JSON.stringify(tourists_countries_stats,null,2));
 	});
-});
-	
+});*/
+
 // GET tourists_countries_stats/country
 	app.get(BASE_API_URL+"/tourists_countries_stats/:country", (req,res)=>{
 		console.log("NEW GET ...../tourists_countries_stats/country");
@@ -229,7 +249,7 @@ app.delete(BASE_API_URL+"/tourists_countries_stats", (req,res)=>{
 });
 
 // GET COUNTRY/XXX
-
+/*
 app.get(BASE_API_URL+"/tourists_countries_stats/:country", (req,res)=>{
 	
 	var country = req.params.country;
@@ -244,7 +264,7 @@ app.get(BASE_API_URL+"/tourists_countries_stats/:country", (req,res)=>{
 	}else{
 		res.sendStatus(404,"COUNTRY NOT FOUND");
 	}
-});
+});*/
 
 // PUT COUNTRY/XXX
 
