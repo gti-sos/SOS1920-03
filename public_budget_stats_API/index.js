@@ -190,7 +190,7 @@ app.post(BASE_API_URL+"/public_budget_stats",(req,res) =>{
 	}
 });
 	
-	//POST exports_imports_stats/xxxx
+	//POST public_budget_stats/xxxx
 app.post(BASE_API_URL+"/public_budget_stats/:country", (req,res)=>{
     res.status(405).send("NOT ALLOWED");
 });
@@ -239,7 +239,7 @@ app.post(BASE_API_URL+"/public_budget_stats/:public_budget_loss", (req,res)=>{
 	
 	//--------------------TODOS LOS DELETE ----------------------
 	
-	// DELETE exports_imports_stats
+	// DELETE public_budget_stats
 	app.delete(BASE_API_URL+"/public_budget_stats", (req,res)=>{
 		console.log("NEW DELETE ...../public_budget_stats");
 		db.remove({},{multi:true}, (err, public_budget_stats) => {
@@ -247,7 +247,7 @@ app.post(BASE_API_URL+"/public_budget_stats/:public_budget_loss", (req,res)=>{
 			res.send(JSON.stringify(public_budget_stats,null,2));
 		});
 	});
-	// DELETE exports_imports_stats/country
+	// DELETE public_budget_stats
 
 	app.delete(BASE_API_URL+"/public_budget_stats/:country", (req,res)=>{
 		console.log("NEW DELETE ...../public_budget_stats/country");
@@ -263,7 +263,7 @@ app.post(BASE_API_URL+"/public_budget_stats/:public_budget_loss", (req,res)=>{
 		});
 	});
 	
-	//DELETE exports_imports_stats/country/year
+	//DELETE public_budget_stats/country/year
 	app.delete(BASE_API_URL+"/public_budget_stats/:country/:year", (req,res)=>{
 		console.log("NEW DELETE ...../public_budget_stats/country/year");
 			var reqcountry = req.params.country;
