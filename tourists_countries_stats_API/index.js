@@ -13,7 +13,6 @@ module.exports = function(app){
 
 //GET loadInitialData
 app.get(BASE_API_URL + "/tourists_countries_stats/loadInitialData", (req,res) => {
-	db.remove({}, { multi: true }, function(err, numRemoved) {});
 	console.log("NEW GET .../tourists_countries_stats/loadInitialData");
 	
 	var stats= [
