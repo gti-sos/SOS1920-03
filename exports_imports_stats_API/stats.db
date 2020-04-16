@@ -1,8 +1,5 @@
-{"country":"Alemania","year":2017,"import_profit":1571000,"export_profit":1104000,"food_export":5.61,"_id":"v4Zr0yGu30PrvHbT"}
-{"country":"Espagna","year":2017,"import_profit":342400,"export_profit":333400,"food_export":16.23,"_id":"noTgdYvtLl44HQLb"}
-{"country":"Italia","year":2017,"import_profit":426586,"export_profit":426700,"food_export":8.99,"_id":"wm6AQCS6mlKSblqp"}
-{"$$deleted":true,"_id":"wm6AQCS6mlKSblqp"}
-{"country":"Italia","year":2017,"import_profit":426586,"export_profit":111111,"food_export":8.99,"_id":"GKZXHKowAigeizhS"}
-{"$$deleted":true,"_id":"v4Zr0yGu30PrvHbT"}
-{"$$deleted":true,"_id":"GKZXHKowAigeizhS"}
-{"$$deleted":true,"_id":"noTgdYvtLl44HQLb"}
+{"country":"Italia","year":2017,"import_profit":426586,"export_profit":426700,"food_export":8.99,"_id":"Opa2DBaVaFCtAliT"}
+{"$$deleted":true,"_id":"Opa2DBaVaFCtAliT"}
+{"country":"Alemania","year":2017,"import_profit":1571000,"export_profit":1104000,"food_export":5.61,"_id":"OqzlknnZz7iwd3uq"}
+{"country":"Espagna","year":2017,"import_profit":342400,"export_profit":333400,"food_export":16.23,"_id":"FOw4dNgWhcV0DUYC"}
+{"country":"Italia","year":2017,"import_profit":426586,"export_profit":426700,"food_export":8.99,"_id":"VWmWp62PYATvnu0x"}
