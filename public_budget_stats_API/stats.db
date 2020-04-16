@@ -1,15 +1,3 @@
-{"country":"Espagna","year":2017,"public_budget_income":492400000,"population":46491000,"public_budget_loss":535900000000,"_id":"DEvi7UccEHruumTo"}
-{"country":"Francia","year":2017,"public_budget_income":1598000000,"population":82605000,"public_budget_loss":1573000000000,"_id":"oylFahblnlnMjzVD"}
-{"country":"Alemania","year":2017,"public_budget_income":1598000000,"population":82605000,"public_budget_loss":1573000000,"_id":"wS2CUq3xC1I240fZ"}
-{"$$deleted":true,"_id":"DEvi7UccEHruumTo"}
-{"$$deleted":true,"_id":"oylFahblnlnMjzVD"}
-{"$$deleted":true,"_id":"wS2CUq3xC1I240fZ"}
-{"country":"Francia","year":2017,"public_budget_income":1598000000,"population":82605000,"public_budget_loss":1573000000000,"_id":"7EwvrEamQSkUaj3U"}
-{"country":"Espagna","year":2017,"public_budget_income":492400000,"population":46491000,"public_budget_loss":535900000000,"_id":"hcbP4dlKl1O88UgS"}
-{"country":"Alemania","year":2017,"public_budget_income":1598000000,"population":82605000,"public_budget_loss":1573000000,"_id":"ltc0GL0hG5YY3kYe"}
-{"$$deleted":true,"_id":"7EwvrEamQSkUaj3U"}
-{"$$deleted":true,"_id":"hcbP4dlKl1O88UgS"}
-{"$$deleted":true,"_id":"ltc0GL0hG5YY3kYe"}
-{"country":"Francia","year":2017,"public_budget_income":1598000000,"population":82605000,"public_budget_loss":1573000000000,"_id":"hlJNAkFstU082HXP"}
 {"country":"Espagna","year":2017,"public_budget_income":492400000,"population":46491000,"public_budget_loss":535900000000,"_id":"ew7o4JDG9RCH13rm"}
 {"country":"Alemania","year":2017,"public_budget_income":1598000000,"population":82605000,"public_budget_loss":1573000000,"_id":"gKnkWnQs73lOa5jT"}
+{"country":"Francia","year":2017,"public_budget_income":1598000000,"population":82605000,"public_budget_loss":1573000000000,"_id":"hlJNAkFstU082HXP"}
