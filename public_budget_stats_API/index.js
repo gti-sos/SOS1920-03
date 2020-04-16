@@ -24,12 +24,20 @@ app.get(BASE_API_URL+"/public_budget_stats/loadInitialData", (req,res) =>{
 		public_budget_loss: 1573000000000
 	},
 	{ 
-		country: "España",
+		country: "Espagna",
 		year: 2017,
 		public_budget_income:492400000,
 		population: 46491000,
 		public_budget_loss:	535900000000	
-	}];
+	},
+	{
+		country: "Alemania",
+		year: 2017,
+		public_budget_income:1598000000,
+		population: 82605000,
+		public_budget_loss:	1573000000
+		
+		}];
 		public_budget_stats=stats;
 		db.remove({}, { multi: true }, function(err, numRemoved) {});
 		db.insert(stats);
@@ -48,7 +56,7 @@ app.get(BASE_API_URL+"/public_budget_stats/:country", (req,res)=>{
 		
 	});
 
-//GET cuntry/year
+//GET country/year
 	app.get(BASE_API_URL+"/public_budget_stats/:country/:year", (req,res)=>{
 		console.log("NEW GET ...../public_budget_stats/country/year");
 		var reqcountry = req.params.country;
