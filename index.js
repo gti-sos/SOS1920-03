@@ -4,6 +4,9 @@ const path = require("path");
 const port = process.env.PORT || 80;
 const app = express();
 app.use(bodyParser.json());
+
+app.use("/", express.static("./public"));
+
 //------------------------------------------------------------------------------
 //--------------------ANTONIO JOSE MARIN RODRIGUEZ------------------------------
 //------------------------------------------------------------------------------
