@@ -33,5 +33,6 @@
 </script>
 
 <main>
+	<h1>Selector</h1>
 	<Router {routes} />
 </main>
