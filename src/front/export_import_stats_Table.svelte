@@ -15,7 +15,7 @@
 	}
 
 	get_export_import_stats();
-</script>
+  </script>
 
 <main>
 	<table>
