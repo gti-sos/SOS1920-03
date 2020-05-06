@@ -367,23 +367,23 @@ var app = (function () {
     			t17 = space();
     			td9 = element("td");
     			td9.textContent = "food_export";
-    			add_location(td0, file, 23, 4, 481);
-    			add_location(td1, file, 24, 4, 502);
-    			add_location(td2, file, 25, 4, 520);
-    			add_location(td3, file, 26, 4, 547);
-    			add_location(td4, file, 27, 4, 574);
-    			add_location(tr0, file, 22, 3, 472);
-    			add_location(thead, file, 21, 2, 461);
-    			add_location(td5, file, 32, 4, 641);
-    			add_location(td6, file, 33, 4, 662);
-    			add_location(td7, file, 34, 4, 680);
-    			add_location(td8, file, 35, 4, 707);
-    			add_location(td9, file, 36, 4, 734);
-    			add_location(tr1, file, 31, 3, 632);
-    			add_location(tbody, file, 30, 5, 621);
-    			attr_dev(table, "class", "svelte-ncji4t");
-    			add_location(table, file, 20, 1, 451);
-    			add_location(main, file, 19, 0, 443);
+    			add_location(td0, file, 23, 4, 504);
+    			add_location(td1, file, 24, 4, 526);
+    			add_location(td2, file, 25, 4, 545);
+    			add_location(td3, file, 26, 4, 573);
+    			add_location(td4, file, 27, 4, 601);
+    			add_location(tr0, file, 22, 3, 494);
+    			add_location(thead, file, 21, 2, 482);
+    			add_location(td5, file, 32, 4, 673);
+    			add_location(td6, file, 33, 4, 695);
+    			add_location(td7, file, 34, 4, 714);
+    			add_location(td8, file, 35, 4, 742);
+    			add_location(td9, file, 36, 4, 770);
+    			add_location(tr1, file, 31, 3, 663);
+    			add_location(tbody, file, 30, 5, 651);
+    			attr_dev(table, "class", "svelte-4rpd4v");
+    			add_location(table, file, 20, 1, 471);
+    			add_location(main, file, 19, 0, 462);
     		},
     		l: function claim(nodes) {
     			throw new Error("options.hydrate only works if the component was compiled with the `hydratable: true` option");
@@ -502,8 +502,8 @@ var app = (function () {
     		c: function create() {
     			main = element("main");
     			export_import_stats_Table_1 = element("export_import_stats_Table");
-    			add_location(export_import_stats_Table_1, file$1, 5, 1, 105);
-    			add_location(main, file$1, 4, 0, 97);
+    			add_location(export_import_stats_Table_1, file$1, 5, 1, 110);
+    			add_location(main, file$1, 4, 0, 101);
     		},
     		l: function claim(nodes) {
     			throw new Error("options.hydrate only works if the component was compiled with the `hydratable: true` option");
