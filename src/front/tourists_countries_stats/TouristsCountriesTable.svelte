@@ -87,7 +87,7 @@
 					<td><input bind:value="{newTcs.tourist}"></td>
                     <td><input bind:value="{newTcs.difference_2016_17}"></td>
                     <td><input bind:value="{newTcs.turist_income}"></td>
-					<td> <Button outline  color="primary" on:click={insertTcs}>Insert</Button> </td>
+					<td> <Button outline  color="primary" on:click={insertTcs}>Insertar</Button> </td>
 				</tr>
 
 				{#each tcs as tcs}
@@ -99,7 +99,7 @@
 						<td>{tcs.tourist}</td>
                         <td>{tcs.difference_2016_17}</td>
                         <td>{tcs.tourist_income}</td>
-						<td><Button outline color="danger" on:click="{deleteTcs(tcs.country)}">Delete</Button></td>
+						<td><Button outline color="danger" on:click="{deleteTcs(tcs.country)}">Borrar</Button></td>
 					</tr>
 				{/each}
 			</tbody>
