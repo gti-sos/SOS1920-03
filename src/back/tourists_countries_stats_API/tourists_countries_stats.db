@@ -1,7 +1,4 @@
-{"country":"Francia","year":2017,"tourist":85800000,"difference_2016_17":2.6,"tourist_income":60700000000,"_id":"DSO0WflrHOeRMI6R"}
-{"country":"Italia","year":2017,"tourist":58200000,"difference_2016_17":11.2,"tourist_income":44200000000,"_id":"LiCflJKSkYg91XCY"}
-{"country":"Alemania","year":2017,"tourist":37500000,"difference_2016_17":5.2,"tourist_income":39800000000,"_id":"nhwdMvt7CJmn8CDy"}
-{"country":"Espana","year":2017,"tourist":81900000,"difference_2016_17":10.1,"tourist_income":67900000000,"_id":"wrbhBSOVhatbI8vv"}
-{"country":"Burkina Faso","year":"2017","tourist":"1","difference":"0","income":"3","_id":"C6T202Ov17Jafddr"}
-{"$$deleted":true,"_id":"C6T202Ov17Jafddr"}
-{"$$deleted":true,"_id":"DSO0WflrHOeRMI6R"}
+{"country":"Espana","year":2017,"tourist":81900000,"difference_2016_17":10.1,"tourist_income":67900000000,"_id":"8FZkSIILBdoAieGs"}
+{"country":"Alemania","year":2017,"tourist":37500000,"difference_2016_17":5.2,"tourist_income":39800000000,"_id":"gvAiGVkBxWBO2T9Y"}
+{"country":"Italia","year":2017,"tourist":58200000,"difference_2016_17":11.2,"tourist_income":44200000000,"_id":"on3yhELMufZMx90s"}
+{"country":"Francia","year":2017,"tourist":85800000,"difference_2016_17":2.6,"tourist_income":60700000000,"_id":"yS3mTWjDque4iGvH"}

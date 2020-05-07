@@ -13,11 +13,11 @@
 
     export let params = {};
     let tcs = {};
-    let updatedCountry = "XXXX";
-    let updatedYear = 12345;
-    let updatedTourist = "XXXX@xxxxx.com";
+    let updatedCountry = "";
+    let updatedYear = "";
+    let updatedTourist = 12345;
     let updatedDifference = "X.X %";
-    let updatedIncome = "XXXXXXXXXX";
+    let updatedIncome = 123456;
     let errorMsg = "";
 
     onMount(getTcs);
@@ -25,7 +25,7 @@
     async function getTcs() {
 
         console.log("Fetching tcs...");
-        const res = await fetch("/api/v1/tourist_countries_stats/" + params.tcsCountry);
+        const res = await fetch("/api/v1/tourist_countries_stats/" + params.country + "/" + params.year);
 
         if (res.ok) {
             console.log("Ok:");
@@ -34,8 +34,8 @@
             updatedCountry = tcs.country;
             updatedYear = tcs.year;
             updatedTourist = tcs.tourist;
-            updatedDifference = tcs.difference;
-            updatedIncome = tcs.income;
+            updatedDifference = tcs.difference_2016_17;
+            updatedIncome = tcs.tourist_income;
             console.log("Received tcs.");
         } else {
             errorMsg = res.status + ": " + res.statusText;
@@ -48,14 +48,14 @@
 
         console.log("Updating tcs..." + JSON.stringify(params.tcsCountry));
 
-        const res = await fetch("/api/v1/tourist_countries_stats/" + params.tcsCountry, {
+        const res = await fetch("/api/v1/tourist_countries_stats/" + params.country + "/" + params.year, {
             method: "PUT",
             body: JSON.stringify({
-                country: params.tcsCountry,
-                year: updatedYear,
-                tourist: updatedTourist,
-                difference: updatedDifference,
-                income: updatedIncome
+                country: params.country,
+                year: parseInt(params.year),
+                "tourist": updatedTourist,
+                "difference_2016_17": updatedDifference,
+                "tourist_income": updatedIncome
             }),
             headers: {
                 "Content-Type": "application/json"
@@ -67,27 +67,31 @@
 
 
     }
+    
+
 </script>
 <main>
-    <h3>Edit Tcs <strong>{params.tcsCountry}</strong></h3>
+    <h3>Edtitar Estadísticas de <strong>{params.country}</strong></h3>
     {#await tcs}
         Loading tcs...
     {:then tcs}
         <Table bordered>
             <thead>
                 <tr>
+                    <th>tcs</th>>
                     <th>Country</th>
                     <th>Year</th>
                     <th>Tourist</th>
-                    <th>Difference</th>
-                    <th>Income</th>
+                    <th>Difference 16-17</th>
+                    <th>Tourist Income</th>
                     <th>Actions</th>
                 </tr>
             </thead>
             <tbody>
                 <tr>
+                    <td>{tcs.country}</td>
                     <td>{updatedCountry}</td>
-                    <td><input bind:value="{updatedYear}"></td>
+                    <td>{updatedYear}</td>
                     <td><input bind:value="{updatedTourist}"></td>
                     <td><input bind:value="{updatedDifference}"></td>
                     <td><input bind:value="{updatedIncome}"></td>

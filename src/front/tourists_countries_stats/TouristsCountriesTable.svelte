@@ -11,8 +11,8 @@
 		country: "",
 		year: "",
 		tourist: "",
-        difference: "",
-        income: ""
+        difference_2016_17: "",
+        turist_income: ""
 	};
 
 	onMount(getTcs);
@@ -54,6 +54,14 @@
 			getTcs();
 		});
 	}
+
+	async function deleteTcsAll() {
+		const res = await fetch("/api/v1/tourists_countries_stats/", {
+			method: "DELETE"
+		}).then(function (res) {
+			getTcs();
+		});
+	}
 </script>
 
 <main>
@@ -77,26 +85,27 @@
 					<td><input bind:value="{newTcs.country}"></td>
 					<td><input bind:value="{newTcs.year}"></td>
 					<td><input bind:value="{newTcs.tourist}"></td>
-                    <td><input bind:value="{newTcs.difference}"></td>
-                    <td><input bind:value="{newTcs.income}"></td>
+                    <td><input bind:value="{newTcs.difference_2016_17}"></td>
+                    <td><input bind:value="{newTcs.turist_income}"></td>
 					<td> <Button outline  color="primary" on:click={insertTcs}>Insert</Button> </td>
 				</tr>
 
 				{#each tcs as tcs}
 					<tr>
 						<td>
-							<a href="#/tourists_countries_stats/{tcs.country}">{tcs.country}</a>
+							<a href="#/tourists_countries_stats/{tcs.country}/{tcs.year}">{tcs.country}</a>
 						</td>
 						<td>{tcs.year}</td>
 						<td>{tcs.tourist}</td>
-                        <td>{tcs.difference}</td>
-                        <td>{tcs.income}</td>
+                        <td>{tcs.difference_2016_17}</td>
+                        <td>{tcs.tourist_income}</td>
 						<td><Button outline color="danger" on:click="{deleteTcs(tcs.country)}">Delete</Button></td>
 					</tr>
 				{/each}
 			</tbody>
 		</Table>
 	{/await}
+	<Button outline color= "red" on:click = {deleteTcsAll}>Borrar todo</Button>
 
 
 </main>
