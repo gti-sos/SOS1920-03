@@ -4,6 +4,7 @@
 	import Home from './Home.svelte';
 
 	//Antonio Jose Marin Rodriguez
+	import TouristsCountries from './tourists_countries_stats/App.svelte';
 	import TouristsCountriesTable from './tourists_countries_stats/TouristsCountriesTable.svelte';
 	import EditTouristsCountries from './tourists_countries_stats/EditTouristsCountries.svelte';
 
@@ -21,17 +22,18 @@
 		"/": Home,
 		"/tourists_countries_stats": TouristsCountriesTable,
 		"/tourists_countries_stats/:country/:year": EditTouristsCountries,
-
+/*
 		"/exports_imports_stats": ExportsImportsTable,
 		"/exports_imports_stats/:country/:year": EditExportsImports,
 		
 		"/public_budget_stats": PublicBudgetTable,
 		"/public_budget_stats/:country/:year": EditPublicBudget,
-		
+*/		
 		"*": NotFound
 	};
 </script>
 
 <main>
+	<h1>Selector</h1>
 	<Router {routes} />
 </main>
